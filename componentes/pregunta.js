@@ -32,6 +32,12 @@ class Pregunta{
         deleteBtn.className = "deleteBtn";
         deleteBtn.innerHTML = "x";
 
+
+        if(this.preguntaLista.estado==="historico"){
+            deleteBtn.style.display="block";
+        }else{
+            deleteBtn.style.display="none";
+        }
         deleteBtn.addEventListener('click', ()=>{
            
             database2.ref('preguntas/'+this.preguntaLista.id).set(null);
