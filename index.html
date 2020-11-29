@@ -3,15 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Parcial</title>
+    <link rel="stylesheet" href="estilos/estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
+
+
+<!--titulo--> <h1>JuliMarketing</h1>
+
+<!--inputbox--> <div class="preguntaInputCont">
+  <div id="preguntaActual">
+
+  </div>
+
+<input id="preguntaInput" placeholder="Escribir pregunta" type="text"></input>
+<button id="enviarBtn" type="text">Enviar</button>
+</div>
+
+ <!--elementoContenedor--> <div class="historico">
+  <p>Historico</p>
+  <div id="preguntaPasada">
+
+  </div>
+
+</div>
     
 
 
 
 
-
+<script></script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
@@ -37,5 +59,8 @@
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 </script>
+
+<script src="componentes/pregunta.js"></script>
+<script src="index.js"></script>
 </body>
 </html>
