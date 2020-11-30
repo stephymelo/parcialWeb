@@ -2,8 +2,9 @@ const enviarBtn = document.getElementById('enviarBtn');
 const preguntaActual = document.getElementById('preguntaActual');
 const preguntaInput = document.getElementById('preguntaInput');
 const preguntaPasada = document.getElementById('preguntaPasada');
+const promedio = document.getElementById('promedio');
 const database = firebase.database();
-const promedioCalculado = 0;
+
 
 
 enviarPregunta = () => {
@@ -21,7 +22,6 @@ enviarPregunta = () => {
                     {
                         id: nuevaPregunta.val().id,
                         preguntica: nuevaPregunta.val().preguntica,
-                        promedio:nuevaPregunta.val().promedio,
                         estado: "historico",
                     }
                 );
@@ -38,7 +38,6 @@ enviarPregunta = () => {
 
         id: referencia.key,
         preguntica: preguntaInput.value,
-        promedio:promedioCalculado,
         estado: "actual",
         
 
@@ -82,17 +81,3 @@ database.ref('preguntas').on('value', function (data) {
 
 
 
-
-promedio = () => {
-    database.ref(`preguntas/${id}/promedio`)
-  .once('value')
-  .then((snapshot) => {
-    const val = snapshot.val();
-    console.log(val);
-  })
-  .catch((e) => {
-    console.log('Error fetching data', e);
-  });
-    
-
-}

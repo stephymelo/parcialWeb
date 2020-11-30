@@ -1,4 +1,6 @@
 const database2 = firebase.database();
+let total = 0;
+let puntajeIn = 0;
 
 
 
@@ -20,13 +22,27 @@ class Pregunta{
         preguntaCont.className="preguntaCont"
         preguntaCont.innerHTML = this.preguntaLista.preguntica;
 
-        let idPregunta = document.createElement('div');
-        idPregunta.className="idPregunta";
-        idPregunta.innerHTML = this.preguntaLista.id;
+    
 
-        let promedio = document.createElement('div');
+        let promedio = document.createElement('p');
         promedio.className = "promedio";
-        idPregunta.innerHTML = this.preguntaLista.promedio;
+
+
+        database2.ref("puntaje").orderByChild("idPregunta").equalTo(this.preguntaLista.id).on("value",function(data){
+            total = data.numChildren();
+            puntajeIn = 0;
+            data.forEach(function(puntajedb){
+                let value = puntajedb.val();
+                puntajeIn = puntajeIn + value.puntaje
+                let resultado = puntajeIn/total
+                promedio.innerHTML = Math.round(resultado*100)/100;
+               
+
+            })
+       
+        })
+        console.log(promedio);
+
 
         let deleteBtn = document.createElement('button');
         deleteBtn.className = "deleteBtn";
@@ -48,7 +64,8 @@ class Pregunta{
 
         component.appendChild(deleteBtn);
         component.appendChild(preguntaCont);
-        component.appendChild(idPregunta);
+        component.appendChild(promedio);
+    
 
         return component;
 
