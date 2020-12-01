@@ -78,8 +78,10 @@ body{
 }
 
 .promedio{
-    color: black;
+    color: #ffb5b5;
     border-style: solid;
+    padding:5px;
+    max-width: max-content;
 
 }
 
